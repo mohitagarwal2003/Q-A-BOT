@@ -1,0 +1,13 @@
+.env
+key.json
+node_modules
+/MATERIALUI/
+/backend_setup/
+/bot/
+/css/
+/hitesh_backend/
+/hitesh_js/
+/hitesh_react/
+/question/
+/react/
+/yt_majorProject/
