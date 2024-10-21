@@ -1,10 +1,7 @@
 import express from "express";
 import connectdb from "../backend/db/index.js";
 import dotenv from "dotenv";
-import authRoutes from "./routes/auth.js";
-import pdfRoutes from "./routes/pdfRoutes.js";
-import fileRoutes from "./routes/fileRoutes.js";
-import telegramRoutes from "./routes/telegramRoutes.js";
+import routes from "../backend/routes/index.js";
 
 dotenv.config({
   path: "./.env",
@@ -24,7 +21,7 @@ app.use(
 app.use(express.static("dist"));
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/auth", authRoutes);
+app.use("/api", routes);
 //-------------------connection with db-----------
 connectdb()
   .then(() => {
@@ -36,9 +33,7 @@ connectdb()
     console.log("MONGO db connection failed !!! ", err);
   });
 
-app.use("/api", pdfRoutes);
-app.use("/api", fileRoutes);
-app.use("/api", telegramRoutes);
+// app.use("/api", routes);
 
 // const newUser = new User({
 //   name: "karan",
