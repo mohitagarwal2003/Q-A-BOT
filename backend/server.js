@@ -1,7 +1,7 @@
 import express from "express";
 import connectdb from "../backend/db/index.js";
 import dotenv from "dotenv";
-import routes from "./routes";
+import routes from "../backend/routes/index.js";
 
 dotenv.config({
   path: "./.env",
@@ -21,7 +21,7 @@ app.use(
 app.use(express.static("dist"));
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/auth", authRoutes);
+app.use("/api", routes);
 //-------------------connection with db-----------
 connectdb()
   .then(() => {
@@ -33,7 +33,7 @@ connectdb()
     console.log("MONGO db connection failed !!! ", err);
   });
 
-app.use("/api", routes);
+// app.use("/api", routes);
 
 // const newUser = new User({
 //   name: "karan",
